@@ -53,3 +53,13 @@ button:hover {
   transition: 0.5s;
   cursor: pointer;
 }
+
+.circle-pad {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  border-radius: 20px;
+  background-color: rgb(255, 191, 15);
+  width: 35em;
+  height: fit-content;
+}
