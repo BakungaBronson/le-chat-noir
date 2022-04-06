@@ -22,14 +22,15 @@ export const main = Reach.App(() => {
   const Bob = Participant('Bob', {
     ...Player,
   });
+  
+  init();
 
   init();
   
   Alice.only(() => {
     // Generate random position to move first
-    const position = null;
+    const position = Null;
   });
-
 
   // The first one to publish deploys the contract
   Alice.publish(position);
