@@ -2,12 +2,12 @@
 
 const Player = {
   getPosition: Fun([], UInt),
-  seeOutcome: Fun([UInt], null),
+  seeOutcome: Fun([UInt], Null),
 }
 
 const Cat = {
   // Function that gets the next node using breadth first search and returns a new position
-  findNode: Fun([Object], UInt),
+  findNode: Fun([UInt], UInt),
 }
 
 export const main = Reach.App(() => {
@@ -23,12 +23,13 @@ export const main = Reach.App(() => {
     ...Player,
   });
 
+  init();
+  
   Alice.only(() => {
     // Generate random position to move first
     const position = null;
   });
 
-  init();
 
   // The first one to publish deploys the contract
   Alice.publish(position);
