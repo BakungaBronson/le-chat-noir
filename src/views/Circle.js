@@ -40,7 +40,7 @@ export class Circle extends React.Component {
 
         return (
             <div style={this.state.clicked? clickedStyles: unclickedStyles} onClick={this.setClicked}>
-                {this.props.cat_position == this.props.index? <img src='https://www.lifepng.com/wp-content/uploads/2020/11/Le-Chat-Noir-png-hd.png' width='30px' /> : <h1 />}
+                {this.props.index === 40? <img src='https://www.lifepng.com/wp-content/uploads/2020/11/Le-Chat-Noir-png-hd.png' width='30px' /> : <h1 />}
             </div>
         )
     }
