@@ -26,8 +26,9 @@ export const main = Reach.App(() => {
   init();
   
   Alice.only(() => {
-    // Generate random position to move first
-    const position = -1;
+    // Generate random position to move first, since the cat starts at the center
+    // It will always be 40
+    const position = 40;
   });
 
   // The first one to publish deploys the contract
