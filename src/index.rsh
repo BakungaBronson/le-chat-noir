@@ -24,12 +24,10 @@ export const main = Reach.App(() => {
   });
   
   init();
-
-  init();
   
   Alice.only(() => {
     // Generate random position to move first
-    const position = Null;
+    const position = -1;
   });
 
   // The first one to publish deploys the contract
