@@ -5,7 +5,7 @@ export class Start extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            cat_position: Math.floor(Math.random() * 81)
+            cat_position: 40,
         }
     }
     render() {

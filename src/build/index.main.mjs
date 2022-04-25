@@ -1,8 +1,8 @@
-// Automatically generated with Reach 0.1.9 (c449a2f7)
+// Automatically generated with Reach 0.1.10 (b3269997)
 /* eslint-disable */
-export const _version = '0.1.9';
-export const _versionHash = '0.1.9 (c449a2f7)';
-export const _backendVersion = 11;
+export const _version = '0.1.10';
+export const _versionHash = '0.1.10 (b3269997)';
+export const _backendVersion = 13;
 
 export function getExports(s) {
   const stdlib = s.reachStdlib;
@@ -41,33 +41,23 @@ export async function Alice(ctcTop, interact) {
   const ctc = ctcTop._initialize();
   const stdlib = ctc.stdlib;
   const ctc0 = stdlib.T_UInt;
-  const ctc1 = stdlib.T_Bool;
-  const ctc2 = stdlib.T_Object({
-    i: ctc0,
-    sign: ctc1
-    });
   
-  
-  const v49 = {
-    i: stdlib.checkedBigNumberify('<builtin>', stdlib.UInt_max, 1),
-    sign: false
-    };
   
   const txn1 = await (ctc.sendrecv({
-    args: [v49],
+    args: [stdlib.checkedBigNumberify('./index.rsh:31:22:decimal', stdlib.UInt_max, '40')],
     evt_cnt: 1,
     funcNum: 0,
-    lct: stdlib.checkedBigNumberify('./index.rsh:34:9:dot', stdlib.UInt_max, 0),
+    lct: stdlib.checkedBigNumberify('./index.rsh:35:9:dot', stdlib.UInt_max, '0'),
     onlyIf: true,
-    out_tys: [ctc2],
-    pay: [stdlib.checkedBigNumberify('./index.rsh:34:9:decimal', stdlib.UInt_max, 0), []],
+    out_tys: [ctc0],
+    pay: [stdlib.checkedBigNumberify('./index.rsh:35:9:decimal', stdlib.UInt_max, '0'), []],
     sim_p: (async (txn1) => {
       const sim_r = { txns: [], mapRefs: [], maps: [] };
       let sim_txn_ctr = stdlib.UInt_max;
       const getSimTokCtr = () => { sim_txn_ctr = sim_txn_ctr.sub(1); return sim_txn_ctr; };
       
       
-      const {data: [v52], secs: v54, time: v53, didSend: v31, from: v51 } = txn1;
+      const {data: [v46], secs: v48, time: v47, didSend: v27, from: v45 } = txn1;
       
       ;
       sim_r.isHalt = false;
@@ -76,10 +66,10 @@ export async function Alice(ctcTop, interact) {
       }),
     soloSend: true,
     timeoutAt: undefined /* mto */,
-    tys: [ctc2],
+    tys: [ctc0],
     waitIfNotPresent: false
     }));
-  const {data: [v52], secs: v54, time: v53, didSend: v31, from: v51 } = txn1;
+  const {data: [v46], secs: v48, time: v47, didSend: v27, from: v45 } = txn1;
   ;
   const txn2 = await (ctc.recv({
     didSend: false,
@@ -89,7 +79,7 @@ export async function Alice(ctcTop, interact) {
     timeoutAt: undefined /* mto */,
     waitIfNotPresent: false
     }));
-  const {data: [], secs: v57, time: v56, didSend: v35, from: v55 } = txn2;
+  const {data: [], secs: v51, time: v50, didSend: v31, from: v49 } = txn2;
   ;
   return;
   
@@ -105,38 +95,33 @@ export async function Bob(ctcTop, interact) {
   const ctc = ctcTop._initialize();
   const stdlib = ctc.stdlib;
   const ctc0 = stdlib.T_UInt;
-  const ctc1 = stdlib.T_Bool;
-  const ctc2 = stdlib.T_Object({
-    i: ctc0,
-    sign: ctc1
-    });
   
   
   const txn1 = await (ctc.recv({
     didSend: false,
     evt_cnt: 1,
     funcNum: 0,
-    out_tys: [ctc2],
+    out_tys: [ctc0],
     timeoutAt: undefined /* mto */,
     waitIfNotPresent: false
     }));
-  const {data: [v52], secs: v54, time: v53, didSend: v31, from: v51 } = txn1;
+  const {data: [v46], secs: v48, time: v47, didSend: v27, from: v45 } = txn1;
   ;
   const txn2 = await (ctc.sendrecv({
     args: [],
     evt_cnt: 0,
     funcNum: 1,
-    lct: v53,
+    lct: v47,
     onlyIf: true,
     out_tys: [],
-    pay: [stdlib.checkedBigNumberify('./index.rsh:38:7:decimal', stdlib.UInt_max, 0), []],
+    pay: [stdlib.checkedBigNumberify('./index.rsh:39:7:decimal', stdlib.UInt_max, '0'), []],
     sim_p: (async (txn2) => {
       const sim_r = { txns: [], mapRefs: [], maps: [] };
       let sim_txn_ctr = stdlib.UInt_max;
       const getSimTokCtr = () => { sim_txn_ctr = sim_txn_ctr.sub(1); return sim_txn_ctr; };
       
       
-      const {data: [], secs: v57, time: v56, didSend: v35, from: v55 } = txn2;
+      const {data: [], secs: v51, time: v50, didSend: v31, from: v49 } = txn2;
       
       ;
       sim_r.txns.push({
@@ -152,7 +137,7 @@ export async function Bob(ctcTop, interact) {
     tys: [],
     waitIfNotPresent: false
     }));
-  const {data: [], secs: v57, time: v56, didSend: v35, from: v55 } = txn2;
+  const {data: [], secs: v51, time: v50, didSend: v31, from: v49 } = txn2;
   ;
   return;
   
@@ -166,7 +151,7 @@ const _ALGO = {
     pure: [],
     sigs: []
     },
-  appApproval: `BiACAAEmAQAiNQAxGEEAzChkSSJbNQGBCFs1AjYaABdJQQAHIjUEIzUGADYaAhc1BDYaAzYaARdJIwxAAB0jEkQjNAESRDQESSISTDQCEhFEgASai5F0sEIAMUgiNAESRDQESSISTDQCEhFESTUFNf+ABIfUIrY0/1CwgaCNBogAYyM1ATIGNQJCABwxGYEFEkSxIrIBIrIII7IQMgmyCTIKsgezQgAFMRkiEkQoNAEWNAIWUGc0BkEACoAEFR98dTQHULA0AEkjCDIEEkQxFhJEI0MxGSISREL/3yI1ASI1AkL/wzQASUojCDUAOAcyChJEOBAjEkQ4CBJEiQ==`,
+  appApproval: `BiACAAEmAQAiNQAxGEEAzihkSSJbNQGBCFs1AjYaABdJQQAHIjUEIzUGADYaAhc1BDYaAzYaARdJIwxAAB0jEkQjNAESRDQESSISTDQCEhFEgASai5F0sEIAM0giNAESRDQESSISTDQCEhFESTUFFzX/gASCxGH+NP8WULCBoI0GiABjIzUBMgY1AkIAHDEZgQUSRLEisgEisggjshAyCbIJMgqyB7NCAAUxGSISRCg0ARY0AhZQZzQGQQAKgAQVH3x1NAdQsDQASSMIMgQSRDEWEkQjQzEZIhJEQv/fIjUBIjUCQv/DNABJSiMINQA4BzIKEkQ4ECMSRDgIEkSJ`,
   appClear: `Bg==`,
   companionInfo: null,
   extraPages: 0,
@@ -192,29 +177,17 @@ const _ETH = {
           {
             "components": [
               {
-                "components": [
-                  {
-                    "internalType": "uint256",
-                    "name": "_i",
-                    "type": "uint256"
-                  },
-                  {
-                    "internalType": "bool",
-                    "name": "_sign",
-                    "type": "bool"
-                  }
-                ],
-                "internalType": "struct T1",
-                "name": "v52",
-                "type": "tuple"
+                "internalType": "uint256",
+                "name": "v46",
+                "type": "uint256"
               }
             ],
-            "internalType": "struct T2",
+            "internalType": "struct T1",
             "name": "msg",
             "type": "tuple"
           }
         ],
-        "internalType": "struct T3",
+        "internalType": "struct T2",
         "name": "_a",
         "type": "tuple"
       }
@@ -237,6 +210,12 @@ const _ETH = {
     "anonymous": false,
     "inputs": [
       {
+        "indexed": false,
+        "internalType": "address",
+        "name": "_who",
+        "type": "address"
+      },
+      {
         "components": [
           {
             "internalType": "uint256",
@@ -246,30 +225,18 @@ const _ETH = {
           {
             "components": [
               {
-                "components": [
-                  {
-                    "internalType": "uint256",
-                    "name": "_i",
-                    "type": "uint256"
-                  },
-                  {
-                    "internalType": "bool",
-                    "name": "_sign",
-                    "type": "bool"
-                  }
-                ],
-                "internalType": "struct T1",
-                "name": "v52",
-                "type": "tuple"
+                "internalType": "uint256",
+                "name": "v46",
+                "type": "uint256"
               }
             ],
-            "internalType": "struct T2",
+            "internalType": "struct T1",
             "name": "msg",
             "type": "tuple"
           }
         ],
         "indexed": false,
-        "internalType": "struct T3",
+        "internalType": "struct T2",
         "name": "_a",
         "type": "tuple"
       }
@@ -280,6 +247,12 @@ const _ETH = {
   {
     "anonymous": false,
     "inputs": [
+      {
+        "indexed": false,
+        "internalType": "address",
+        "name": "_who",
+        "type": "address"
+      },
       {
         "components": [
           {
@@ -294,7 +267,7 @@ const _ETH = {
           }
         ],
         "indexed": false,
-        "internalType": "struct T4",
+        "internalType": "struct T3",
         "name": "_a",
         "type": "tuple"
       }
@@ -365,7 +338,7 @@ const _ETH = {
             "type": "bool"
           }
         ],
-        "internalType": "struct T4",
+        "internalType": "struct T3",
         "name": "_a",
         "type": "tuple"
       }
@@ -380,22 +353,22 @@ const _ETH = {
     "type": "receive"
   }
 ]`,
-  Bytecode: `0x60806040526040516106d33803806106d3833981016040819052610022916101b5565b6000805543600355604080518251815260208084015151805182840152015115158183015290517fe558ba42eed307e0877d0ef0ae69963e5c00a346025d48858f70b8e28824c4d29181900360600190a161007f341560076100bd565b600160008181554390915560408051602080820184905282518083038201815291830190925280516100b59260029201906100e6565b505050610291565b816100e25760405163100960cb60e01b81526004810182905260240160405180910390fd5b5050565b8280546100f290610256565b90600052602060002090601f016020900481019282610114576000855561015a565b82601f1061012d57805160ff191683800117855561015a565b8280016001018555821561015a579182015b8281111561015a57825182559160200191906001019061013f565b5061016692915061016a565b5090565b5b80821115610166576000815560010161016b565b604080519081016001600160401b03811182821017156101af57634e487b7160e01b600052604160045260246000fd5b60405290565b600081830360608112156101c857600080fd5b6101d061017f565b835181526040601f19830112156101e657600080fd5b6040519150602082016001600160401b038111838210171561021857634e487b7160e01b600052604160045260246000fd5b60405261022361017f565b602085015181526040850151801515811461023d57600080fd5b6020828101919091529083528101919091529392505050565b600181811c9082168061026a57607f821691505b6020821081141561028b57634e487b7160e01b600052602260045260246000fd5b50919050565b610433806102a06000396000f3fe6080604052600436106100405760003560e01c80631e93b0f1146100495780632c10a1591461006d5780638323075714610080578063ab53f2c61461009557005b3661004757005b005b34801561005557600080fd5b506003545b6040519081526020015b60405180910390f35b61004761007b3660046102fc565b6100b8565b34801561008c57600080fd5b5060015461005a565b3480156100a157600080fd5b506100aa6101e4565b604051610064929190610314565b6100c86001600054146009610281565b6100e2813515806100db57506001548235145b600a610281565b6000808055600280546100f490610371565b80601f016020809104026020016040519081016040528092919081815260200182805461012090610371565b801561016d5780601f106101425761010080835404028352916020019161016d565b820191906000526020600020905b81548152906001019060200180831161015057829003601f168201915b505050505080602001905181019061018591906103b4565b90507f79ca1a789d797004bc78dff9632d64e202e102f2d008dcc20c5a645ef7d4a7d1826040516101b691906103d8565b60405180910390a16101ca34156008610281565b600080805560018190556101e0906002906102a6565b5050565b6000606060005460028080546101f990610371565b80601f016020809104026020016040519081016040528092919081815260200182805461022590610371565b80156102725780601f1061024757610100808354040283529160200191610272565b820191906000526020600020905b81548152906001019060200180831161025557829003601f168201915b50505050509050915091509091565b816101e05760405163100960cb60e01b81526004810182905260240160405180910390fd5b5080546102b290610371565b6000825580601f106102c2575050565b601f0160209004906000526020600020908101906102e091906102e3565b50565b5b808211156102f857600081556001016102e4565b5090565b60006040828403121561030e57600080fd5b50919050565b82815260006020604081840152835180604085015260005b818110156103485785810183015185820160600152820161032c565b8181111561035a576000606083870101525b50601f01601f191692909201606001949350505050565b600181811c9082168061038557607f821691505b6020821081141561030e57634e487b7160e01b600052602260045260246000fd5b80151581146102e057600080fd5b6000602082840312156103c657600080fd5b81516103d1816103a6565b9392505050565b813581526040810160208301356103ee816103a6565b8015156020840152509291505056fea26469706673582212201b29b10cead12b49849d5021a217d68eede7aa7d9b5cbf6359f5e4724a69e9b064736f6c634300080c0033`,
-  BytecodeLen: 1747,
+  Bytecode: `0x60806040526040516106ac3803806106ac8339810160408190526100229161017c565b6000805543600355604080513381528251602080830191909152830151518183015290517f28822ae872174fb8917549901c639f920e5c2ef0fb881ea78a94dee578586e9d9181900360600190a161007c341560076100ba565b600160008181554390915560408051602080820184905282518083038201815291830190925280516100b29260029201906100e3565b505050610255565b816100df5760405163100960cb60e01b81526004810182905260240160405180910390fd5b5050565b8280546100ef9061021a565b90600052602060002090601f0160209004810192826101115760008555610157565b82601f1061012a57805160ff1916838001178555610157565b82800160010185558215610157579182015b8281111561015757825182559160200191906001019061013c565b50610163929150610167565b5090565b5b808211156101635760008155600101610168565b600081830360408082121561019057600080fd5b80518082016001600160401b0380821183831017156101bf57634e487b7160e01b600052604160045260246000fd5b818452865183526020601f19860112156101d857600080fd5b83519450602085019150848210818311171561020457634e487b7160e01b600052604160045260246000fd5b5090915260209384015182529283015250919050565b600181811c9082168061022e57607f821691505b6020821081141561024f57634e487b7160e01b600052602260045260246000fd5b50919050565b610448806102646000396000f3fe6080604052600436106100405760003560e01c80631e93b0f1146100495780632c10a1591461006d5780638323075714610080578063ab53f2c61461009557005b3661004757005b005b34801561005557600080fd5b506003545b6040519081526020015b60405180910390f35b61004761007b3660046102fe565b6100b8565b34801561008c57600080fd5b5060015461005a565b3480156100a157600080fd5b506100aa6101e6565b604051610064929190610316565b6100c86001600054146009610283565b6100e2813515806100db57506001548235145b600a610283565b6000808055600280546100f490610373565b80601f016020809104026020016040519081016040528092919081815260200182805461012090610373565b801561016d5780601f106101425761010080835404028352916020019161016d565b820191906000526020600020905b81548152906001019060200180831161015057829003601f168201915b505050505080602001905181019061018591906103b6565b90507f400d21ea4e4a5e28b4ae5f0f476c201fc8036473fcf7c8cd252f38698020b4f133836040516101b89291906103da565b60405180910390a16101cc34156008610283565b600080805560018190556101e2906002906102a8565b5050565b6000606060005460028080546101fb90610373565b80601f016020809104026020016040519081016040528092919081815260200182805461022790610373565b80156102745780601f1061024957610100808354040283529160200191610274565b820191906000526020600020905b81548152906001019060200180831161025757829003601f168201915b50505050509050915091509091565b816101e25760405163100960cb60e01b81526004810182905260240160405180910390fd5b5080546102b490610373565b6000825580601f106102c4575050565b601f0160209004906000526020600020908101906102e291906102e5565b50565b5b808211156102fa57600081556001016102e6565b5090565b60006040828403121561031057600080fd5b50919050565b82815260006020604081840152835180604085015260005b8181101561034a5785810183015185820160600152820161032e565b8181111561035c576000606083870101525b50601f01601f191692909201606001949350505050565b600181811c9082168061038757607f821691505b6020821081141561031057634e487b7160e01b600052602260045260246000fd5b80151581146102e257600080fd5b6000602082840312156103c857600080fd5b81516103d3816103a8565b9392505050565b6001600160a01b038316815281356020808301919091526060820190830135610402816103a8565b801515604084015250939250505056fea26469706673582212201127e5c186668175784f03576455c64929c1652abc1557824d95497cf209694164736f6c634300080c0033`,
+  BytecodeLen: 1708,
   Which: `oD`,
-  version: 6,
+  version: 7,
   views: {
     }
   };
 export const _stateSourceMap = {
   1: {
-    at: './index.rsh:35:11:after expr stmt semicolon',
+    at: './index.rsh:36:11:after expr stmt semicolon',
     fs: [],
     msg: null,
     who: 'Module'
     },
   2: {
-    at: './index.rsh:39:11:after expr stmt semicolon',
+    at: './index.rsh:40:11:after expr stmt semicolon',
     fs: [],
     msg: null,
     who: 'Module'
