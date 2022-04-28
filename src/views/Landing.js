@@ -19,7 +19,7 @@ export class Landing extends React.Component {
 
     render() {
         return (
-            this.state.start? <Intro /> : <Start />
+            this.state.start? <Start /> : <Intro handleClick={this.handleClick} />
         )
     }
 }
