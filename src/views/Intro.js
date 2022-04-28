@@ -4,7 +4,10 @@ import '../index.css';
 export class Intro extends React.Component {
     constructor(props) {
         super(props);
-
+        this.setClicked = this.setClicked.bind(this);
+    }
+    setClicked(e) {
+        this.props.handleClick();
     }
     render() {
         return (
@@ -15,7 +18,7 @@ export class Intro extends React.Component {
                     </div>
                     <div className='row'>
                     <br/>
-                    <button onClick={this.handleClick}>Start</button>
+                    <button onClick={this.setClicked}>Start</button>
                 </div>
             </section>
         )
