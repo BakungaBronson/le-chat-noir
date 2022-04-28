@@ -4,16 +4,10 @@ import React from 'react'
 export class Circle extends React.Component {
     constructor(props) {
         super(props);
-        this.state = {
-            clicked: false,
-            hover: false,
-        }
         this.setClicked = this.setClicked.bind(this);
     }   
     setClicked(e) {
-        this.setState({
-            clicked: true,
-        })
+        this.props.update_status(this.props.index);
     }
     render(){
         const unclickedStyles = {
@@ -39,7 +33,7 @@ export class Circle extends React.Component {
         }
 
         return (
-            <div style={this.state.clicked? clickedStyles: unclickedStyles} onClick={this.props.index === this.props.cat_position? void(0): this.setClicked }>
+            <div style={this.props.clicked? clickedStyles: unclickedStyles} onClick={this.props.cat_position !== this.props.index? this.props.clicked? void(0): this.setClicked: void(0)}>
                 {this.props.index === this.props.cat_position? <img src='https://www.lifepng.com/wp-content/uploads/2020/11/Le-Chat-Noir-png-hd.png' width='30px' /> : <h1 />}
             </div>
         )
