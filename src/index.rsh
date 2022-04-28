@@ -3,6 +3,7 @@
 const Player = {
   getPosition: Fun([], UInt),
   seeOutcome: Fun([UInt], Null),
+  informTimeout: Fun([], Null),
 }
 
 const Cat = {
@@ -15,15 +16,23 @@ export const main = Reach.App(() => {
   const Alice = Participant('Alice', {
     ...Player,
     ...Cat,
+    wager: UInt,
     deadline: UInt,
   });
 
   // Bob will be the other player 
   const Bob = Participant('Bob', {
     ...Player,
+    acceptWager: Fun([UInt], Null),
   });
   
   init();
+
+  // const informTimeout = () => {
+  //   each([Alice, Bob], () => {
+  //     interact.informTimeout();
+  //   })
+  // }
   
   Alice.only(() => {
     // Generate random position to move first, since the cat starts at the center
