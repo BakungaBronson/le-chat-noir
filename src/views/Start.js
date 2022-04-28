@@ -47,16 +47,16 @@ export class Start extends React.Component {
                 switch (state.cat_position){
                     // Case1: Cat is in the corners (3 positions) + Exit points
                     case 0:
-                        movement_array = [1, 9, 10, 83, 82];
+                        movement_array = [83, 82];
                         break;
                     case 8:
-                        movement_array = [-1, 8, 9, 75, 76];
+                        movement_array = [75, 76];
                         break;
                     case 72:
-                        movement_array = [1, -9, -8, 9, 10];
+                        movement_array = [9, 10];
                         break;
                     case 80:
-                        movement_array = [-1, -10, -9, 1, 4];
+                        movement_array = [1, 4];
                         break;
 
                     // Case2: Cat is at the left most column (5 positions) + Exit points
@@ -67,7 +67,7 @@ export class Start extends React.Component {
                     case 45:
                     case 54:
                     case 63:
-                        movement_array = [9, 10, 1, -9, -8, (82 - state.cat_position)];
+                        movement_array = [(82 - state.cat_position)];
                         break;
                     
                     // Case3: Cat is at the right most column (5 positions) + Exit points
@@ -78,7 +78,7 @@ export class Start extends React.Component {
                     case 53:
                     case 62:
                     case 71:
-                        movement_array = [-9, -10, -1, 8, 9, (84 - state.cat_position)];
+                        movement_array = [(84 - state.cat_position)];
                         break;
                     
                     // Case4: Cat is at the top most column (5 positions) + Exit points
@@ -89,7 +89,7 @@ export class Start extends React.Component {
                     case 5:
                     case 6:
                     case 7:
-                        movement_array = [-1, 8, 9, 10, 1, (83 - state.cat_position)];
+                        movement_array = [(83 - state.cat_position)];
                         break;
 
                     // Case5: Cat is at the bottom most column (5 positions) + Exit points
@@ -100,7 +100,7 @@ export class Start extends React.Component {
                     case 77:
                     case 78:
                     case 79:
-                        movement_array = [-1, -10, -9, -8, 1, (81 - state.cat_position)];
+                        movement_array = [(81 - state.cat_position)];
                         break;
                     
                     // Case6: Cat is away from the edge of the grid (8 positions) 
