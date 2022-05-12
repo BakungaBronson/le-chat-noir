@@ -3,21 +3,86 @@ import { Circle } from './Circle';
 import { GameOver } from './GameOver';
 import { loadStdlib } from '@reach-sh/stdlib';
 import * as backend from '../build/index.main.mjs';
+const reach = loadStdlib(process.env);
+
+// Functiont to return an array of booleans with 4-10 replaced with true
+const gameState = function() {
+    let arr = Array(81).fill(false);
+    for(let i = 0; i < Math.floor(Math.random() * (10-4) + 4); i++) {
+        let index = 0;
+        do{
+            index = Math.floor(Math.random()*81);
+        }while(arr[index] ===  true || index === 40);
+        arr[index] = true;
+    }
+    return arr
+}();
+
+const outcome = ["Player Wins", "Cat Wins"];
+const {standardUnit} = reach;
+const defaults = {defaultFundAmt: '10', defaultWager: '1', standardUnit};
+
+class Player extends React.Component{
+    // getPosition: Fun([], UInt),
+    // seeOutcome: Fun([UInt], Null),
+    // informTimeout: Fun([], Null),
+    // updateBoard: Fun([UInt], gameBoard),
+    getPosition(){
+        // Return new position
+    }
+    seeOutcome(index){
+        // Output outcome
+    }
+    informTimeout(){
+        // Show timeout page to both users
+    }
+    updateBoard(newPosition){
+        // Return array of 81 bools
+    }
+}
+
+class Deloyer extends Player {
+    constructor(props){
+        super(props);
+    }
+    // getNode: Fun([gameBoard], UInt),
+    // initGameBoard: Fun([], gameBoard),
+    // gameCheck: Fun([gameBoard], Bool),
+    getNode(board){
+        // Return the new position for the cat
+    }
+    initGameBoard(){
+        // Return a new game board
+    }
+    gameCheck(board){
+        // Return a boolean if the game is over
+    }
+}
+
+class Attacher extends Player {
+    constructor(props){
+        super(props);
+        this.state = {
+            view: "Start"
+        }
+    }
+    async acceptWager(amount){
+        const wager = reach.formatCurrency(amount, 4);
+        return await new Promise(resolvedPromise => {
+            this.setState({view: "AcceptWaher", wager, resolvedPromise});
+        })
+    }
+    termsAccepted(){
+        this.state.reolveAccepted
+    }
+}
 
 export class Start extends React.Component {
     constructor(props) {
         super(props);
-        let arr = Array(81).fill(false);
-        for(let i = 0; i < Math.floor(Math.random() * (10-4) + 4); i++) {
-            let index = 0;
-            do{
-                index = Math.floor(Math.random()*81);
-            }while(arr[index] ===  true || index === 40);
-            arr[index] = true;
-        }
         this.state = {
             cat_position: 40,
-            circles_clicked: arr,
+            circles_clicked: gameState,
             game_over: false,
             winner: ""
         }
@@ -207,13 +272,18 @@ export class Start extends React.Component {
         const arr = Array(81).fill();
 
         return (
-            this.state.game_over? <GameOver winner={this.state.winner} /> :
-            <>
-            <section className='circle-pad'>
-                {arr.fill().map((item, index) => {
-                    return <Circle key={index} cat_position={this.state.cat_position} update_status={this.update_status} index={index} clicked={this.state.circles_clicked[index]} />
-                })}
-            </section></>
+            // this.state.game_over? <GameOver winner={this.state.winner} /> :
+            // <>
+            // <section className='circle-pad'>
+            //     {arr.fill().map((item, index) => {
+            //         return <Circle key={index} cat_position={this.state.cat_position} update_status={this.update_status} index={index} clicked={this.state.circles_clicked[index]} />
+            //     })}
+            // </section></>
+            renderView(this, <><section className='circle-pad'>
+            {arr.fill().map((item, index) => {
+                return <Circle key={index} cat_position={this.state.cat_position} update_status={this.update_status} index={index} clicked={this.state.circles_clicked[index]} />
+            })}
+        </section></>)
         )
     }
 }

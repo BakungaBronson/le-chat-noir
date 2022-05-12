@@ -6,8 +6,8 @@ export class Intro extends React.Component {
         super(props);
         this.setClicked = this.setClicked.bind(this);
     }
-    setClicked(e) {
-        this.props.handleClick();
+    setClicked(view) {
+        this.props.handleClick(view);
     }
     render() {
         return (

@@ -2,9 +2,6 @@ import React from 'react';
 import '../index.css';
 
 export class GameOver extends React.Component {
-    constructor(props) {
-        super(props);
-    }
     render() {
         return (
             <section className='intro'>
@@ -14,7 +11,7 @@ export class GameOver extends React.Component {
                     </div>
                     <div className='row'>
                     <br/>
-                    <h1>{`Player ${this.props.winner} wins 😃`}</h1>
+                    <h1>{`${this.props.parent.state.winner} 😃`}</h1>
                 </div>
             </section>
         )
