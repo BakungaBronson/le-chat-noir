@@ -1,14 +1,7 @@
 import React from 'react';
 import '../index.css';
 
-export class Intro extends React.Component {
-    constructor(props) {
-        super(props);
-        this.setClicked = this.setClicked.bind(this);
-    }
-    setClicked(view) {
-        this.props.handleClick(view);
-    }
+export class GameOver extends React.Component {
     render() {
         return (
             <section className='intro'>
@@ -18,7 +11,7 @@ export class Intro extends React.Component {
                     </div>
                     <div className='row'>
                     <br/>
-                    <button onClick={this.setClicked}>Start</button>
+                    <h1>{`${this.props.parent.state.winner} 😃`}</h1>
                 </div>
             </section>
         )

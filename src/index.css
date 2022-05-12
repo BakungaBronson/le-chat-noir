@@ -10,7 +10,11 @@ body {
   -moz-osx-font-smoothing: grayscale;
   display: grid;
   place-items: center;
-  background-color: rgb(1, 23, 43);
+  /* background-color: rgb(1, 23, 43); */
+  background: url("https://i.pinimg.com/originals/2f/f6/c1/2ff6c1b7c9bc9d1a00f4beb08e4a01a7.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
 html {
@@ -26,6 +30,43 @@ html {
   background-color: rgb(255, 191, 15);
   width: 30em;
   height: 30em;
+  transition: 0.5s;
+}
+
+/* Code to have mute button for background music */
+
+audio {
+  display: none;
+}
+
+#audioButton {
+  font-size: 16px;
+  color: #eee;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 50px;
+  padding: 15px;
+  border: none;
+  border-radius: 2px;
+  outline: none;
+  background: rgba(115, 67, 167, 0.8);
+  box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.4);
+  opacity: 0.8;
+  cursor: pointer;
+  transition: all 0.4s ease-out;
+}
+
+#audioButton.fade:hover {
+  opacity: 0.8;
+}
+
+.fade {
+  opacity: 0.2;
+  top: 0;
+  left: 0;
+  transform: translate(0, 0);
 }
 
 .intro h1 {
