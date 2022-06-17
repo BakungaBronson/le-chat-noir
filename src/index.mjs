@@ -1,4 +1,4 @@
-import {loadStdlib} from '@reach-sh/stdlib';
+import {loadStdlib, ask} from '@reach-sh/stdlib';
 import * as backend from './build/index.main.mjs';
 const stdlib = loadStdlib(process.env);
 
@@ -203,11 +203,11 @@ await Promise.all([
     // acceptWager: Fun([UInt], Null),
     // updateBoard: Fun([gameBoard], Null),
 
-    getPosition: () => {
+    getPosition: async() => {
         let newPosition = 0;
         do{
 
-            newPosition = Math.floor(Math.random() * 81);
+          newPosition = await ask.ask('Enter a new position: ', parseInt);
 
         }while(state.board[newPosition] === true || state.cat_posistion === newPosition);
 
@@ -224,5 +224,5 @@ await Promise.all([
     }
   }),
 ]);
-
+ask.done();
 console.log('Goodbye, Alice and Bob!');
