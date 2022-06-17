@@ -46,15 +46,12 @@ const Player = {
   seeOutcome: Fun([UInt], Null),
   informTimeout: Fun([], Null),
   log: Fun(true, Null),
-  logInfo: Fun([UInt], Null),
 };
 
 export const main = Reach.App(() => {
   // Alice will be the Cat in this case
   const Alice = Participant("Alice", {
     ...Player,
-    log: Fun(true, Null),
-    logBoard: Fun([gameBoard], Null),
     getNode: Fun([gameBoard, cat_move], UInt),
     updateCatPosition: Fun([UInt], Null),
     initGameBoard: Fun([], gameBoard),
@@ -89,7 +86,7 @@ export const main = Reach.App(() => {
     wager
   );
   commit();
-  // Alice.interact.logBoard(randomizedBoard);
+  // Alice.interact.log(randomizedBoard);
   
   Bob.only(() => {
     interact.acceptWager(wager);
@@ -98,8 +95,6 @@ export const main = Reach.App(() => {
   // The second one to publish always attaches
   Bob.pay(wager)
     .timeout(relativeTime(deadline), () => closeTo(Alice, informTimeout));
-  // Alice.interact.log(winner(randomizedBoard, start_cat_position));
-
 
   // Used single state variable since you can only have one var above a while loop
   var workingState = {
@@ -119,12 +114,11 @@ export const main = Reach.App(() => {
 
     Alice.only(() => {
       const new_cat_position = declassify(interact.getNode(workingState["randomizedBoard"], workingState["start_cat_position"]));
-      interact.log(new_cat_position);
+      // interact.log(new_cat_position);
       interact.updateCatPosition(new_cat_position);
     });
     Alice.publish(new_cat_position);
     commit();
-    Alice.interact.logInfo(129);
 
     const otherWorkingState = {
       ...workingState,
@@ -138,7 +132,6 @@ export const main = Reach.App(() => {
     Bob.publish(position);
     commit();
     
-    Alice.interact.logInfo(128);
     Bob.only(() => {
       assume(position < 81);
       const newBoardState = otherWorkingState["randomizedBoard"].set(position, true);
@@ -153,11 +146,10 @@ export const main = Reach.App(() => {
     continue;
   }
 
-  Alice.interact.log(159);
-  Alice.interact.log(gameCheck(
-    workingState["randomizedBoard"],
-    workingState["start_cat_position"]
-  ));
+  // Alice.interact.log(gameCheck(
+  //   workingState["randomizedBoard"],
+  //   workingState["start_cat_position"]
+  // ));
   assert(
     gameCheck(
       workingState["randomizedBoard"],
@@ -178,6 +170,6 @@ export const main = Reach.App(() => {
       catOffBoard(workingState["start_cat_position"])? 1: 0
     );
   });
-  // write your program here
+
   exit();
 });
