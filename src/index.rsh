@@ -5,11 +5,6 @@ const cat_move = UInt;
 const [isOutcome, PLAYER_WINS, CAT_WINS] = makeEnum(2);
 const state = Object({ "0": gameBoard, "1": UInt });
 
-const checkGameBoard = (board, index) => {
-  assert(index < board.length === true);
-  return true;
-};
-
 const catOffBoard = (cat_position) =>
   cat_position === 81 ||
   cat_position === 82 ||
@@ -36,11 +31,6 @@ const catTrapped = (board, cat_position) => {
 
 const gameCheck = (board, cat_position) =>
   catOffBoard(cat_position) || catTrapped(board, cat_position);
-
-// assert(winner(gameBoard, cat_move) === CAT_WINS);
-// assert(winner(gameBoard, cat_move) === CAT_WINS);
-// assert(winner(gameBoard, cat_move) === CAT_WINS);
-// assert(winner(gameBoard, cat_move) === CAT_WINS);
 
 const Player = {
   seeOutcome: Fun([UInt], Null),
@@ -86,7 +76,6 @@ export const main = Reach.App(() => {
     wager
   );
   commit();
-  // Alice.interact.log(randomizedBoard);
   
   Bob.only(() => {
     interact.acceptWager(wager);
@@ -96,7 +85,6 @@ export const main = Reach.App(() => {
   Bob.pay(wager)
     .timeout(relativeTime(deadline), () => closeTo(Alice, informTimeout));
 
-  // Used single state variable since you can only have one var above a while loop
   var workingState = {
     randomizedBoard: randomizedBoard,
     start_cat_position: start_cat_position,
@@ -113,8 +101,10 @@ export const main = Reach.App(() => {
     commit();
 
     Alice.only(() => {
-      const new_cat_position = declassify(interact.getNode(workingState["randomizedBoard"], workingState["start_cat_position"]));
-      // interact.log(new_cat_position);
+      const new_cat_position = declassify(
+        interact
+        .getNode(workingState["randomizedBoard"], workingState["start_cat_position"])
+      );
       interact.updateCatPosition(new_cat_position);
     });
     Alice.publish(new_cat_position);
@@ -146,10 +136,6 @@ export const main = Reach.App(() => {
     continue;
   }
 
-  // Alice.interact.log(gameCheck(
-  //   workingState["randomizedBoard"],
-  //   workingState["start_cat_position"]
-  // ));
   assert(
     gameCheck(
       workingState["randomizedBoard"],
