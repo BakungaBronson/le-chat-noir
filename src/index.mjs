@@ -1,4 +1,4 @@
-import { loadStdlib } from "@reach-sh/stdlib";
+import { loadStdlib, ask } from "@reach-sh/stdlib";
 import * as backend from "./build/index.main.mjs";
 const stdlib = loadStdlib(process.env);
 
@@ -34,7 +34,7 @@ const showBoard = (arr) => {
           placeHolder = `${i * 9 + j}:`;
         }
 
-        if (i * 9 + j === cat_posistion) {
+        if (i * 9 + j === cat_position) {
           // Add a cat emoji
           line += placeHolder + "🐱 ";
         } else {
@@ -161,8 +161,8 @@ await Promise.all([
 
     // updateCatPosition: Fun([UInt], Null),
     updateCatPosition: (newPosition) => {
-      cat_posistion = parseInt(newPosition._hex, 16);
-      console.log("New Cat position: ", cat_posistion);
+      cat_position = parseInt(newPosition._hex, 16);
+      console.log("New Cat position: ", cat_position);
       // Print the board to the screen
       showBoard(board);
     },
@@ -194,21 +194,22 @@ await Promise.all([
     // implement Bob's interact object here
 
     // getPosition: Fun([], UInt),
-    getPosition: () => {
+    getPosition: async() => {
       let newPosition = 0;
-      do {
-        // Return a random new position
-        newPosition = Math.floor(Math.random() * 81);
-      } while (board[newPosition] === true || cat_posistion === newPosition);
+        do{
+          // Ask user to enter a position to block
+          newPosition = await ask.ask('Enter a new position (0 - 80): ', parseInt);
 
-      console.log(`Bob moves to position: ${newPosition}`);
-      return newPosition;
+        }while(board[newPosition] === true || cat_position === newPosition);
+
+        console.log(`Bob moves to position: ${newPosition}`);
+        return newPosition;
     },
     
     // acceptWager: Fun([UInt], Null),
     acceptWager: (wager) => {
       console.log(
-        `Bob accepted the wager of ${stdlib.formatCurrency(parseInt(wager._hex, 16);, 4)}`
+        `Bob accepted the wager of ${stdlib.formatCurrency(parseInt(wager._hex, 16), 4)}`
       );
     },
 
@@ -220,5 +221,5 @@ await Promise.all([
     },
   }),
 ]);
-
+ask.done();
 console.log("Goodbye, Alice and Bob!");
